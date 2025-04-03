@@ -1,7 +1,7 @@
 // src/auth.j
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-// import { loginService } from "./services/loginService";
+import { signInService } from "./services/signInService";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
@@ -14,7 +14,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       authorize: async (credentials) => {
         try {
-          const user = await loginService(credentials);
+          const user = await signInService(credentials);
 
           if (!user) {
             throw new Error("Invalid credentials");
@@ -22,7 +22,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
           console.log("user : ",user)
 
-          return null;
+          return user?.payload;
         } catch (error) {
           console.error("Authorize error:", error);
           return null;

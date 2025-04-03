@@ -8,6 +8,7 @@ export default function RegisterPage() {
         <h1 className="font-bold text-3xl text-center">
           Sign In to Plan<span className="text-watermelon-red">I</span>t{" "}
         </h1>
+        
         <RegisterComponent />
 
         {/* copyright */}

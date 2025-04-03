@@ -8,6 +8,6 @@ export const signedInUser = async (formData) => {
   await signIn("credentials", {
     email: formData?.get("email"),
     password: formData?.get("password"),
-    redirectTo: "/workspace",
+    redirectTo: "/dashboard/",
   });
 };
