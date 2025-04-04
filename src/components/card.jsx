@@ -9,23 +9,24 @@ import { Clock, Ellipsis } from "lucide-react";
 import React from "react";
 
 export default function CardComponent({ spaceId }) {
+  console.log(spaceId);
   return (
     <div className="border border-gray-300 rounded-xl mt-8">
       <div className="p-5">
         <div className="flex justify-between">
-          <h2 className="text-xl font-bold capitalize">HRD Design</h2>
+          <h2 className="text-xl font-bold capitalize">{spaceId?.taskId}</h2>
           <Ellipsis />
         </div>
 
         {/* task detials */}
         <p className="line-clamp-2 text-light-steel-blue my-2 h-12">
-          Description
+          {spaceId?.taksDetails}
         </p>
 
         <div className="flex justify-between items-center mt-4">
           {/* tag */}
           <p className="bg-purple-100 text-purple-500 py-1.5 px-3 rounded-lg">
-            DESIGN
+            {spaceId?.tag}
           </p>
 
           {/* status */}

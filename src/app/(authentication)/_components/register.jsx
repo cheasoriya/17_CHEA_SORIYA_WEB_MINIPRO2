@@ -1,4 +1,5 @@
 "use client";
+import { registerActions } from "@/actions/registerAction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,7 +9,7 @@ import React from "react";
 
 export default function RegisterComponent() {
   return (
-    <form className="space-y-6">
+    <form className="space-y-6" action={registerActions}>
       {/* username */}
       <div>
         <Label
@@ -19,6 +20,7 @@ export default function RegisterComponent() {
         </Label>
 
         <Input
+          name="username"
           type="text"
           placeholder="Please type your username"
           className={` bg-ghost-white py-2.5 px-4 rounded-lg w-full text-light-steel-blue/90`}
@@ -35,6 +37,7 @@ export default function RegisterComponent() {
         </Label>
 
         <Input
+          name="email"
           type="text"
           placeholder="Please type your email"
           className={`bg-ghost-white py-2.5 px-4 rounded-lg w-full text-light-steel-blue/90`}
@@ -51,6 +54,7 @@ export default function RegisterComponent() {
         </Label>
 
         <Input
+          name="password"
           type="password"
           placeholder="Please type your password"
           className={`bg-ghost-white py-2.5 px-4 rounded-lg w-full text-light-steel-blue/90`}

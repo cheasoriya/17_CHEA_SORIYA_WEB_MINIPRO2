@@ -8,11 +8,15 @@ import Link from "next/link";
 import { workspaceByIdService } from "@/services/workspaceByIdService";
 import getAllWorkSpace from "@/services/workspaceService";
 import CardComponent from "@/components/card";
+import LogoutButtonComponent from "@/app/(authentication)/_components/logout";
+import { getTaskByIdService } from "@/services/getTaskByIdService";
 
 export default async function workspaceComponent({ params }) {
   const { id } = await params;
   const reses = await workspaceByIdService(id);
+
   const ress = await getAllWorkSpace();
+
   return (
     <section className="flex w-full py-10">
       <div className="p-5 text-center w-[25%]  space-y-10">
@@ -44,22 +48,14 @@ export default async function workspaceComponent({ params }) {
           <h1 className="text-gray-700 font-bold text-2xl">Favorite</h1>
           <Star className="text-gray-700 font-bold " />
         </div>
-        <Link
-          href="/login"
-          className="flex gap-5 bg-watermelon-red p-3 w-40 justify-center rounded-2xl text-white"
-        >
-          <LogOut />
-          <p>Log Out</p>
-        </Link>
+        <LogoutButtonComponent />
       </div>
       <div className="w-[75%] p-4 space-y-5">
         <NavbarComponent getspacebookId={reses} />
         <HeaderComponent getworkspaceId={reses} />
         <StatusComponent />
         <div className="grid grid-cols-3 gap-20">
-          {ress?.payload?.map((getmap) => (
-            <CardComponent spaceId={getmap} />
-          ))}
+        
         </div>
       </div>
     </section>
